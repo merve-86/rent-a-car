@@ -5,7 +5,7 @@ import { RentedCarData } from "../helpers/data"
 
 const Home = () => {
 
-  const [rents, setRents] = useState(RentedCarData)
+  const [rents, setRents] = useState(JSON.parse(localStorage.getItem('rentedCars')) || [])
   
 
   return (

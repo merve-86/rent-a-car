@@ -4,18 +4,19 @@ import { TiTick } from "react-icons/ti";
 import { TiDelete } from "react-icons/ti";
 
 const RentedCarList = ({ rents, setRents }) => {
-
   const handleToggle = (id) => {
     const updatedRents = rents.map((rent) =>
       rent.id === id ? { ...rent, isReturned: !rent.isReturned } : rent
     );
     setRents(updatedRents);
+    localStorage.setItem("rentedCars", JSON.stringify(updatedRents));
   };
 
   const handleDelete = (id) => {
     const updatedRents = rents.filter((rent) => rent.id !== id);
     setRents(updatedRents);
-  } 
+    localStorage.setItem("rentedCars", JSON.stringify(updatedRents));
+  };
 
   // console.log(rents)
   return (
@@ -47,11 +48,11 @@ const RentedCarList = ({ rents, setRents }) => {
                 className="text-success display-2"
                 onClick={() => handleToggle(rent.id)}
               />
-              <TiDelete 
-              type="button" 
-              className="text-danger display-2"
-              onClick={() => handleDelete(rent.id)}
-               />
+              <TiDelete
+                type="button"
+                className="text-danger display-2"
+                onClick={() => handleDelete(rent.id)}
+              />
             </Col>
           </Row>
         ))

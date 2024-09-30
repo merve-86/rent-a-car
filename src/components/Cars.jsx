@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Col, Container, Image, Row } from "react-bootstrap";
 import { carData } from "../helpers/data";
-import AddModal from "./AddModai";
+import AddModal from "./AddModal";
 
 const Cars = ({rents, setRents}) => {
   const [show, setShow] = useState(false);

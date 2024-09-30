@@ -21,14 +21,27 @@ function AddModal({ show, setShow, car, rents, setRents }) {
     setRents([
       ...rents,
       {
-        id: crypto.randomUUID(),  
+        id: crypto.randomUUID(),
         customerName: customerName,
         date: date,
         car: car,
         isReturned: false,
       },
-    ]);    
-    setCustomerName("");
+    ]);
+     localStorage.setItem(
+       "rentedCars",
+       JSON.stringify([
+         ...rents,
+         {
+           id: crypto.randomUUID(),
+           customerName: customerName,
+           date: date,
+           car: car,
+           isReturned: false,
+         },
+       ])
+     ),
+       setCustomerName("");
     setDate("");
   };
 
