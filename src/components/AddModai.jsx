@@ -4,7 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 
-function AddModal({ show, setShow, car }) {
+function AddModal({ show, setShow, car, rents, setRents }) {
   //   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -13,17 +13,24 @@ function AddModal({ show, setShow, car }) {
   const [customerName, setCustomerName] = useState("");
   const [date, setDate] = useState("");
 
-//   console.log(customerName);
-//   console.log(date)
+  //   console.log(customerName);
+  //   console.log(date)
 
-// const addCar = () => {
-
-// }
-
-const handleSubmit = (e) => {
-    e.preventDefault()
-
-}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setRents([
+      ...rents,
+      {
+        id: crypto.randomUUID(),  
+        customerName: customerName,
+        date: date,
+        car: car,
+        isReturned: false,
+      },
+    ]);    
+    setCustomerName("");
+    setDate("");
+  };
 
   return (
     <>
